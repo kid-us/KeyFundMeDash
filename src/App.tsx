@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import PageNotFound from "./components/Pages/PageNotFound";
-import Protected from "./components/Protected/Protected";
+// import Protected from "./components/Protected/Protected";
 
 function App() {
   return (
@@ -12,9 +12,9 @@ function App() {
         <Route
           path="/"
           element={
-            <Protected>
-              <Home />
-            </Protected>
+            // <Protected>
+            <Home />
+            // </Protected>
           }
         />
         <Route path="/login" element={<Login />} />

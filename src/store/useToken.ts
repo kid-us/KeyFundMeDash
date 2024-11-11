@@ -6,11 +6,11 @@ interface Token {
 }
 
 const useToken = create<Token>((set) => ({
-  access_token: localStorage.getItem("token"),
+  access_token: localStorage.getItem("auth_token"),
   setAccessToken: (token) => {
     token
-      ? localStorage.setItem("token", token)
-      : localStorage.removeItem("token");
+      ? localStorage.setItem("auth_token", token)
+      : localStorage.removeItem("auth_token");
 
     set({ access_token: token });
   },

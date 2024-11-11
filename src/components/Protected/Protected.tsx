@@ -43,7 +43,7 @@ const Protected = ({ children }: ProtectedProps) => {
         })
         .catch((error) => {
           console.error(error);
-          localStorage.removeItem("token"); // Clear token if invalid
+          localStorage.removeItem("auth_token");
           navigate("/login");
         });
     } else {
