@@ -44,12 +44,10 @@ const Protected = ({ children }: ProtectedProps) => {
         .catch((error) => {
           console.error(error);
           localStorage.removeItem("token"); // Clear token if invalid
-          navigate("/sign-in");
-          console.log("Inside");
+          navigate("/login");
         });
     } else {
-      navigate("/sign-in");
-      console.log("Outside");
+      navigate("/login");
     }
   }, [access_token, navigate, login]);
 

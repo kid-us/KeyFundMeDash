@@ -1,7 +1,7 @@
 import z from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import axios from "axios";
@@ -45,13 +45,13 @@ const Login = () => {
     };
 
     axios
-      .post(`${baseUrl}auth/fundraisers-login`, loginData, {
+      .post(`${baseUrl}login`, loginData, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
-        setAccessToken(response.data.token);
+        setAccessToken(response.data.session_value);
         navigate("/");
       })
       .catch((error) => {
@@ -68,7 +68,7 @@ const Login = () => {
           <p className="text-2xl font-bold">Sign In</p>
           {/* Error */}
           {loginError && (
-            <p className="text-sm text-red-700 rounded py-1 mt-5 font-poppins text-center">
+            <p className="text-sm text-red-700 rounded py-1 mt-4 font-poppins text-center">
               <span className="bi-exclamation-triangle-fill me-2"></span>
               &nbsp; Invalid Phone number or Password.
             </p>
@@ -119,12 +119,6 @@ const Login = () => {
               </p>
             )}
 
-            <p className="text-sm text-end mt-2 underline">
-              <Link to={"/forgot-password"} className="text-blue-500 text-sm">
-                Forgot Password?
-              </Link>
-            </p>
-
             <div className="mt-8 text-center">
               {loader ? (
                 <Loader style="bg-black text-white w-full" />
@@ -132,18 +126,6 @@ const Login = () => {
                 <Button label="Login" bg="bg-black" />
               )}
             </div>
-
-            <p className="text-xs mt-5 text-gray-500">
-              By clicking the Sign In button, you agree to the KeyFundMe{" "}
-              <Link to={"/terms"} className="underline text-blue-500">
-                Terms of Service
-              </Link>{" "}
-              and acknowledge the{" "}
-              <Link to={"/privacy-policy"} className="underline text-blue-500">
-                Privacy Policy
-              </Link>
-              .
-            </p>
           </form>
         </div>
       </div>
