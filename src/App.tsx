@@ -1,14 +1,22 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Pages/Home";
-import { Login } from "./components/Pages/Login";
+import Login from "./components/Pages/Login";
 import PageNotFound from "./components/Pages/PageNotFound";
+import Protected from "./components/Protected/Protected";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Protected>
+              <Home />
+            </Protected>
+          }
+        />
         <Route path="/login" element={<Login />} />
 
         {/* 404 */}

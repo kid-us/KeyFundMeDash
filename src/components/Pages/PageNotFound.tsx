@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { notFound } from "../../assets";
-import Navbar from "../Navbar/Navbar";
 import { useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import Navbar from "../Navbar/Navbar";
 
 const PageNotFound = () => {
   const [title] = useState("404 | Page not Found");
