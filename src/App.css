@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+:root {
+  --primary-bg: #00a651;
+  --secondary-bg: #00adee;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.hero {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  position: relative;
+}
+
+.hero::before {
+  --size: 2.75rem;
+  --line: color-mix(in oklch, canvasText, transparent 90%);
+  content: "";
+  width: 97vw;
+  height: 100vh;
+  background: linear-gradient(
+        90deg,
+        var(--line) 0.0625rem,
+        transparent 0.0625rem var(--size)
+      )
+      50% 50% / var(--size) var(--size),
+    linear-gradient(var(--line) 0.0625rem, transparent 0.0625rem var(--size))
+      50% 50% / var(--size) var(--size);
+  mask: linear-gradient(-20deg, transparent 20%, #f0f0f0);
+  top: 0;
+  transform-style: flat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.nav-bg {
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bg {
+  background-color: var(--primary-bg);
+}
+
+.bg-primary {
+  background-color: var(--primary-bg);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-bg);
+}
+
+/* Loader */
+.loader {
+  width: 21px;
+  aspect-ratio: 0.75;
+  --c: no-repeat linear-gradient(#fff 0 0);
+  background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+  animation: l7 1s infinite linear alternate;
+}
+
+@keyframes l7 {
+  0% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+  20% {
+    background-size: 20% 20%, 20% 50%, 20% 50%;
+  }
+  40% {
+    background-size: 20% 100%, 20% 20%, 20% 50%;
+  }
+  60% {
+    background-size: 20% 50%, 20% 100%, 20% 20%;
+  }
+  80% {
+    background-size: 20% 50%, 20% 50%, 20% 100%;
+  }
+  100% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+}
