@@ -51,8 +51,10 @@ const Login = () => {
         },
       })
       .then((response) => {
-        setAccessToken(response.data.session_value);
-        navigate("/");
+        // setAccessToken(response.data.session_value);
+        console.log(response.data.session_value);
+
+        // navigate("/");
       })
       .catch((error) => {
         setLoader(false);
