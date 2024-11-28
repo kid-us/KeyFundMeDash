@@ -51,10 +51,8 @@ const Login = () => {
         },
       })
       .then((response) => {
-        // setAccessToken(response.data.session_value);
-        console.log(response.data.session_value);
-
-        // navigate("/");
+        setAccessToken(response.data.session_value);
+        navigate("/");
       })
       .catch((error) => {
         setLoader(false);
@@ -67,7 +65,7 @@ const Login = () => {
     <div className="bg-[#F8F8F8] h-[100dvh]">
       <div className="flex items-center justify-center h-full lg:px-0 px-2">
         <div className="bg-white shadow lg:w-[29%] h-auto rounded-lg p-8">
-          <p className="text-2xl font-bold">Sign In</p>
+          <p className="text-2xl font-bold">Admin Sign In</p>
           {/* Error */}
           {loginError && (
             <p className="text-sm text-red-700 rounded py-1 mt-4 font-poppins text-center">
