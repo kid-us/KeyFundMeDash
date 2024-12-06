@@ -7,6 +7,7 @@ import { AllCampaigns } from "../Pages/Fundraising";
 import Loading from "../Loading/Loading";
 import useToken from "../../store/useToken";
 import Confirmation from "../Modal/Confirmation";
+import Comment from "../Modal/Comment";
 
 const Pending = () => {
   const [title] = useState<string>("Pending Fundraising");
@@ -15,6 +16,8 @@ const Pending = () => {
   const { access_token } = useToken();
 
   const [onDelete, setOnDelete] = useState<boolean>(false);
+  const [onApprove, setOnApprove] = useState<boolean>(false);
+  const [onDecline, setOnDecline] = useState<boolean>(false);
   const [fundraisingId, setFundraisingId] = useState<string>("");
 
   const { data: campaign, isLoading } = useQuery({
@@ -32,13 +35,33 @@ const Pending = () => {
 
   return (
     <>
-      {/* Delete */}
+      {/* Delete  */}
       {onDelete && (
         <Confirmation
           id={fundraisingId}
-          name="Approve"
-          onDelete={() => setOnDelete(false)}
+          name="Delete"
+          onClose={() => {
+            setOnDelete(false);
+            setFundraisingId("");
+          }}
         />
+      )}
+
+      {/* Approve */}
+      {onApprove && (
+        <Confirmation
+          id={fundraisingId}
+          name="Approve"
+          onClose={() => {
+            setOnApprove(false);
+            setFundraisingId("");
+          }}
+        />
+      )}
+
+      {/* Decline */}
+      {onDecline && (
+        <Comment onClose={() => setOnDecline(false)} id={fundraisingId} />
       )}
 
       <div className="mt-10">
@@ -158,7 +181,8 @@ const Pending = () => {
                   </div>
                 </div>
 
-                <div className="col-span-2">
+                <div className="col-span-2 space-x-10 mt-5">
+                  {/* Delete */}
                   <button
                     onClick={() => {
                       setOnDelete(true);
@@ -166,6 +190,24 @@ const Pending = () => {
                     }}
                   >
                     Delete
+                  </button>
+                  {/* Approve */}
+                  <button
+                    onClick={() => {
+                      setOnApprove(true);
+                      setFundraisingId(c.fid);
+                    }}
+                  >
+                    Approve
+                  </button>
+                  {/* Comment */}
+                  <button
+                    onClick={() => {
+                      setOnDecline(true);
+                      setFundraisingId(c.fid);
+                    }}
+                  >
+                    Decline
                   </button>
                 </div>
               </div>

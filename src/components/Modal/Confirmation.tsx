@@ -2,12 +2,12 @@ import { useState } from "react";
 import Loader from "../Loader/Loader";
 
 interface Props {
-  onDelete: (value: boolean) => void;
+  onClose: (value: boolean) => void;
   name: string;
   id: string;
 }
 
-const Confirmation = ({ onDelete, name }: Props) => {
+const Confirmation = ({ onClose, name, id }: Props) => {
   const [confirmed, setConfirmed] = useState(false);
   const [loader, setLoader] = useState<boolean>(false);
 
@@ -15,6 +15,7 @@ const Confirmation = ({ onDelete, name }: Props) => {
   const handleConfirm = () => {
     setLoader(true);
     setConfirmed(true);
+    console.log(id);
   };
 
   return (
@@ -22,10 +23,12 @@ const Confirmation = ({ onDelete, name }: Props) => {
       <div className="fixed top-0 left-0 bg-neutral-700/50 w-full h-full z-50 "></div>
       <div className="fixed top-0 left-0 w-full z-50">
         <div className="flex justify-center items-center h-[100vh]">
-          <div className="py-6 px-8 rounded lg:w-[30%] lg:mx-0 mx-3 bg-white">
+          <div className="py-6 lg:px-8 px-5 rounded lg:w-[30%] lg:mx-0 mx-3 bg-white">
             {!confirmed ? (
               <>
-                <h1 className="text-black">{name} Fundraising</h1>
+                <h1 className="text-black font-bold text-lg">
+                  {name} Fundraising
+                </h1>
                 <p className="text-sm text-gray-500 mt-2 mb-5 font-poppins">
                   {name === "Delete"
                     ? "Are you sure you want to delete fundraising and fundraiser? This action cannot be undone. Do you want to proceed?"
@@ -34,8 +37,8 @@ const Confirmation = ({ onDelete, name }: Props) => {
                 <div className="flex justify-between gap-x-10">
                   {!loader && (
                     <button
-                      onClick={() => onDelete(false)}
-                      className="w-full bg-sky-600 rounded-lg shadow shadow-zinc-900 text-white h-12 font-poppins"
+                      onClick={() => onClose(false)}
+                      className="w-full text-sm bg-sky-600 rounded-lg shadow shadow-zinc-900 text-white h-11 font-poppins"
                     >
                       Cancel
                     </button>
@@ -50,7 +53,7 @@ const Confirmation = ({ onDelete, name }: Props) => {
                       onClick={() => handleConfirm()}
                       className={`w-full ${
                         name === "Delete" ? "bg-red-500" : "bg-green-600"
-                      } text-white rounded-lg h-12 font-poppins shadow shadow-zinc-900`}
+                      } text-white rounded-lg text-sm h-11 font-poppins shadow shadow-zinc-900`}
                     >
                       {name === "Delete" ? "Delete" : "Approve"}
                     </button>
