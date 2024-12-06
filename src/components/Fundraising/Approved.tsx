@@ -36,9 +36,9 @@ const Approved = () => {
           {campaign && campaign.length > 0 ? (
             <Campaign campaigns={campaign} status="approved" />
           ) : (
-            <div className="grid grid-cols-2 bg-white shadow p-6 rounded-xl">
-              <p className="cols-span-1">
-                There are no active pending campaigns at the moment. When
+            <div className=" bg-white shadow p-6 rounded-xl">
+              <p className="text-center">
+                There are no active approved campaigns at the moment. When
                 available, they will be displayed here.
               </p>
             </div>

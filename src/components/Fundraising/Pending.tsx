@@ -36,8 +36,8 @@ const Pending = () => {
           {campaign && campaign.length > 0 ? (
             <Campaign campaigns={campaign} status="pending" />
           ) : (
-            <div className="grid grid-cols-2 bg-white shadow p-6 rounded-xl">
-              <p className="cols-span-1">
+            <div className=" bg-white shadow p-6 rounded-xl">
+              <p className="text-center">
                 There are no active pending campaigns at the moment. When
                 available, they will be displayed here.
               </p>
