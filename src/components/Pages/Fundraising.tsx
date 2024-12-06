@@ -2,14 +2,17 @@ import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import { useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-
-// const taps = ["pending, approved, declined"];
+import { useLocation } from "react-router-dom";
+import Pending from "../Fundraising/Pending";
+import Approved from "../Fundraising/Approved";
+import Declined from "../Fundraising/Declined";
 
 const Fundraising = () => {
   const [title] = useState<string>("Fundraising");
   useDocumentTitle(title);
 
-  //   const [active, setActive] = useState<string>("pending");
+  const location = useLocation();
+  const path = location.pathname;
 
   return (
     <div className="relative lg:grid md:grid grid-cols-11 lg:bg-[#F8F8F8]">
@@ -21,7 +24,12 @@ const Fundraising = () => {
         <Navbar />
 
         <div className="flex justify-between mt-3">
-          <p>Pending</p>
+          {/* Pending */}
+          {path === "/pending" && <Pending />}
+          {/* Approved */}
+          {path === "/approved" && <Approved />}
+          {/* Declined */}
+          {path === "/declined" && <Declined />}
         </div>
       </div>
     </div>

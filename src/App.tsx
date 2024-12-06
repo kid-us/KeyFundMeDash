@@ -19,14 +19,36 @@ function App() {
             // </Protected>
           }
         />
+        {/* PENDING */}
         <Route
-          path="/fundraising"
+          path="/pending"
           element={
             // <Protected>
             <Fundraising />
             // </Protected>
           }
         />
+
+        {/* APPROVED */}
+        <Route
+          path="/approved"
+          element={
+            // <Protected>
+            <Fundraising />
+            // </Protected>
+          }
+        />
+
+        {/* DECLINED */}
+        <Route
+          path="/declined"
+          element={
+            // <Protected>
+            <Fundraising />
+            // </Protected>
+          }
+        />
+
         <Route
           path="/setting"
           element={
