@@ -1,8 +1,11 @@
+import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Declined = () => {
-  return (
-    <div>Declined</div>
-  )
-}
+  const [title] = useState<string>("Declined Fundraising");
+  useDocumentTitle(title);
 
-export default Declined
+  return <div>Declined</div>;
+};
+
+export default Declined;

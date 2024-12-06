@@ -1,16 +1,11 @@
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
-import { useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useLocation } from "react-router-dom";
 import Pending from "../Fundraising/Pending";
 import Approved from "../Fundraising/Approved";
 import Declined from "../Fundraising/Declined";
 
 const Fundraising = () => {
-  const [title] = useState<string>("Fundraising");
-  useDocumentTitle(title);
-
   const location = useLocation();
   const path = location.pathname;
 

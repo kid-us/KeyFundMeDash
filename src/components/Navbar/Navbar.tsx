@@ -15,7 +15,8 @@ const Navbar = () => {
       <div className="lg:flex hidden justify-between ">
         <div>
           <p className="text-2xl font-bold first-letter:uppercase">
-            {path === "/" ? "Dashboard" : path.substring(1)}
+            {path === "/" ? "Dashboard" : path.substring(1)}{" "}
+            {path !== "/" && path !== "/setting" && "fundraising"}
           </p>
           <p className="text-sm text-gray-400">Welcome back Admin.</p>
         </div>

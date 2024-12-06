@@ -1,9 +1,11 @@
-
+import { useState } from "react";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Pending = () => {
-  return (
-    <div>Pending</div>
-  )
-}
+  const [title] = useState<string>("Pending Fundraising");
+  useDocumentTitle(title);
 
-export default Pending
+  return <div>Pending</div>;
+};
+
+export default Pending;
