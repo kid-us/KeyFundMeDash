@@ -14,17 +14,17 @@ export interface Campaigns {
   id_front: string;
   id_back: string;
   photo: string;
-  account_number: string;
-  _created_at: string;
   bank_name: string;
-  for_who: string;
+  account_number: string;
   created_at: string;
+  _created_at: string;
   
   withdrawal_approved: boolean;
   withdrawal_requested: boolean;
   phone_number_approved: boolean;
-
+  
   id: string;
+  for_who: string;
   campaign_title: string;
   main_image: string;
   target_amount: number;
