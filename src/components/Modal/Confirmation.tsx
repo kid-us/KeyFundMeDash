@@ -32,7 +32,11 @@ const Confirmation = ({ onClose, name, id }: Props) => {
                 <p className="text-sm text-gray-500 mt-2 mb-5 font-poppins">
                   {name === "Delete"
                     ? "Are you sure you want to delete fundraising and fundraiser? This action cannot be undone. Do you want to proceed?"
-                    : "Are you sure you want to approve fundraising and fundraiser? Do you want to proceed?"}
+                    : name === "Approve"
+                    ? "Are you sure you want to approve fundraising and fundraiser? Do you want to proceed?"
+                    : name === "Deactivate"
+                    ? "Are you sure you want to deactivate fundraising? Do you want to proceed?"
+                    : "Are you sure you want to close fundraising? This action cannot be undone. Do you want to proceed"}
                 </p>
                 <div className="flex justify-between gap-x-10">
                   {!loader && (
@@ -52,10 +56,14 @@ const Confirmation = ({ onClose, name, id }: Props) => {
                     <button
                       onClick={() => handleConfirm()}
                       className={`w-full ${
-                        name === "Delete" ? "bg-red-500" : "bg-green-600"
+                        name === "Delete"
+                          ? "bg-red-500"
+                          : name === "Complete" || name === "Approve"
+                          ? "bg-green-600"
+                          : "bg-yellow-500"
                       } text-white rounded-lg text-sm h-11 font-poppins shadow shadow-zinc-900`}
                     >
-                      {name === "Delete" ? "Delete" : "Approve"}
+                      {name}
                     </button>
                   )}
                 </div>
@@ -68,6 +76,9 @@ const Confirmation = ({ onClose, name, id }: Props) => {
                   {name === "Delete" &&
                     "Fundraising and Fundraiser delete successfully!"}
                   {name === "Approve" && "Fundraising approved successfully!"}
+                  {name === "Deactivate" &&
+                    "Fundraising deactivated successfully!"}
+                  {name === "Complete" && "Fundraising closed successfully!"}
                 </p>
               </div>
             )}

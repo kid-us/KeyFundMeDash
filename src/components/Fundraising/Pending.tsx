@@ -10,14 +10,31 @@ import Confirmation from "../Modal/Confirmation";
 import Comment from "../Modal/Comment";
 import Description from "../Modal/Description";
 
+interface Btns {
+  id: number;
+  name: string;
+  bg: string;
+  type: string;
+}
+
+const statusButtons: Btns[] = [
+  { id: 1, type: "confirmation", name: "Approve", bg: "bg-green-500" },
+  { id: 3, type: "comment", name: "Decline", bg: "bg-yellow-500" },
+  { id: 2, type: "confirmation", name: "Delete", bg: "bg-red-500" },
+  { id: 4, type: "confirmation", name: "Deactivate", bg: "bg-blue-500" },
+  { id: 4, type: "confirmation", name: "Complete", bg: "bg-green-500" },
+];
+
 const Pending = () => {
   const [title] = useState<string>("Pending Fundraising");
   useDocumentTitle(title);
 
   const { access_token } = useToken();
 
-  const [onDelete, setOnDelete] = useState<boolean>(false);
-  const [onApprove, setOnApprove] = useState<boolean>(false);
+  const [onConfirmation, setOnConfirmation] = useState({
+    isConfirm: false,
+    type: "",
+  });
   const [onDecline, setOnDecline] = useState<boolean>(false);
   const [fundraisingId, setFundraisingId] = useState<string>("");
 
@@ -54,24 +71,12 @@ const Pending = () => {
   return (
     <>
       {/* Delete  */}
-      {onDelete && (
+      {onConfirmation.isConfirm && (
         <Confirmation
           id={fundraisingId}
-          name="Delete"
+          name={onConfirmation.type}
           onClose={() => {
-            setOnDelete(false);
-            setFundraisingId("");
-          }}
-        />
-      )}
-
-      {/* Approve */}
-      {onApprove && (
-        <Confirmation
-          id={fundraisingId}
-          name="Approve"
-          onClose={() => {
-            setOnApprove(false);
+            setOnConfirmation({ isConfirm: false, type: "" });
             setFundraisingId("");
           }}
         />
@@ -204,6 +209,7 @@ const Pending = () => {
                       {getDate(c.created_at)}
                     </p>
                   </div>
+
                   <div className="flex justify-between">
                     <div>
                       <p className="font-bold mb-1">
@@ -236,6 +242,7 @@ const Pending = () => {
                       />
                     </div>
                   </div>
+
                   <p className="text-sm mb-1">
                     <span className="bi-passport-fill me-2"></span>
                     {c.id_type}
@@ -265,36 +272,27 @@ const Pending = () => {
                       </div>
                     )}
                   </div>
-                </div>
 
-                <div className="col-span-2 space-x-10 mt-5">
-                  {/* Delete */}
-                  <button
-                    onClick={() => {
-                      setOnDelete(true);
-                      setFundraisingId(c.fid);
-                    }}
-                  >
-                    Delete
-                  </button>
-                  {/* Approve */}
-                  <button
-                    onClick={() => {
-                      setOnApprove(true);
-                      setFundraisingId(c.fid);
-                    }}
-                  >
-                    Approve
-                  </button>
-                  {/* Comment */}
-                  <button
-                    onClick={() => {
-                      setOnDecline(true);
-                      setFundraisingId(c.fid);
-                    }}
-                  >
-                    Decline
-                  </button>
+                  {/* Buttons */}
+                  <div className="col-span-2 space-x-5 mt-5">
+                    {statusButtons.map((btn) => (
+                      <button
+                        key={btn.id}
+                        className={`${btn.bg} rounded shadow shadow-zinc-600 text-sm text-white px-3 py-2`}
+                        onClick={() => {
+                          btn.type === "confirmation"
+                            ? setOnConfirmation({
+                                isConfirm: true,
+                                type: btn.name,
+                              })
+                            : setOnDecline(true);
+                          setFundraisingId(c.fid);
+                        }}
+                      >
+                        {btn.name}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))
