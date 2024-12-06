@@ -1,13 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { logo2 } from "../../assets";
-import { useState } from "react";
+// import { useState } from "react";
 import { fund, menus } from "../../services/sidebar";
+import useSidebar from "../../store/useSidebarStore";
 
 const Sidebar = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  const [fundraising, setFundraising] = useState<boolean>(false);
+  const { fundraising, setFundraising } = useSidebar();
 
   return (
     <div className="relative lg:py-6 lg:px-9 bg-white h-[100vh]">
