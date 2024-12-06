@@ -6,6 +6,7 @@ interface Menu {
   name: string;
   icon: string;
   path: string;
+  sub?: boolean;
 }
 
 export const menus: Menu[] = [
@@ -20,6 +21,7 @@ export const menus: Menu[] = [
     icon: "database-fill",
     name: "Fundraising",
     path: "/fundraising",
+    sub: true,
   },
   {
     id: 3,
@@ -49,7 +51,9 @@ const Sidebar = () => {
               key={m.id}
               to={m.path}
               className={`flex gap-3 mb-3 hover:bg-gray-50 p-2 rounded ${
-                path === m.path && "bg-gray-100"
+                path === "/fundraising"
+                  ? ""
+                  : path === m.path && "bg-gray-100 shadow"
               } `}
             >
               <p
@@ -65,6 +69,71 @@ const Sidebar = () => {
                 {m.name}
               </p>
             </Link>
+
+            {m.sub && (
+              <div className="ps-5">
+                {/* Pending */}
+                <Link
+                  to="/fundraising"
+                  className={`flex gap-x-1 ${
+                    path === "/fundraising" && "bg-gray-100 rounded shadow"
+                  } ps-4 pt-2`}
+                >
+                  <p
+                    className={`bi-hourglass-split ${
+                      path === "/fundraising" ? "text-black" : "text-gray-500"
+                    }`}
+                  ></p>
+                  <p
+                    className={`text-[15px] pt-[1px] mb-2 ${
+                      path === "/fundraising" ? "text-black" : "text-gray-500"
+                    }`}
+                  >
+                    Pending
+                  </p>
+                </Link>
+                {/* Approved */}
+                <Link
+                  to="approved"
+                  className={`flex gap-x-1 ${
+                    path === "/approved" && "bg-gray-100 rounded shadow"
+                  } ps-4 pt-2`}
+                >
+                  <p
+                    className={`bi-check-all ${
+                      path === "/approved" ? "text-black" : "text-gray-500"
+                    }`}
+                  ></p>
+                  <p
+                    className={`text-[15px] pt-[1px] mb-2 ${
+                      path === "/approved" ? "text-black" : "text-gray-500"
+                    }`}
+                  >
+                    Approved
+                  </p>
+                </Link>
+                {/* Declined */}
+                <Link
+                  to="declined"
+                  className={`flex gap-x-1 ${
+                    path === "/declined" && "bg-gray-100 rounded shadow"
+                  } ps-4 pt-2`}
+                >
+                  <p
+                    className={`bi-x ${
+                      path === "/declined" ? "text-black" : "text-gray-500"
+                    }`}
+                  ></p>
+                  <p
+                    className={`text-[15px] pt-[1px] mb-2 ${
+                      path === "/declined" ? "text-black" : "text-gray-500"
+                    }`}
+                  >
+                    Declined
+                  </p>
+                </Link>
+              </div>
+            )}
           </>
         ))}
       </div>
