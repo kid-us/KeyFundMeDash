@@ -14,7 +14,7 @@ const Sidebar = () => {
     isActive ? "text-black" : "text-gray-500";
 
   return (
-    <div className="relative lg:py-6 md:py-6 lg:px-9 md:px-5 bg-white h-[100vh]">
+    <div className="sticky top-0 lg:py-6 md:py-6 lg:px-9 md:px-5 bg-white h-[100vh]">
       <div className="flex gap-x-5">
         <img src={logo2} alt="Logo" className="w-12" />
         <p className="mt-3 text-xl font-bold">KeyFundMe</p>

@@ -40,11 +40,10 @@ const Campaign = ({ campaigns, status }: Props) => {
         { id: 1, type: "confirmation", name: "Approve", bg: "bg-green-500" },
         { id: 2, type: "confirmation", name: "Delete", bg: "bg-red-500" },
       ]);
-    } else if (status === "deactivate") {
+    } else if (status === "deactivated") {
       setStatusButtons([
-        { id: 1, type: "confirmation", name: "Complete", bg: "bg-green-500" },
+        { id: 1, type: "confirmation", name: "Pending", bg: "bg-blue-500" },
         { id: 2, type: "confirmation", name: "Delete", bg: "bg-red-500" },
-        { id: 3, type: "confirmation", name: "Activate", bg: "bg-green-500" },
       ]);
     }
   }, [status]);
