@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import Pending from "../Fundraising/Pending";
 import Approved from "../Fundraising/Approved";
 import Declined from "../Fundraising/Declined";
+import { useEffect } from "react";
+import useSidebar from "../../store/useSidebarStore";
 
 export interface Campaigns {
   fid: string;
@@ -56,6 +58,12 @@ export interface AllCampaigns {
 const Fundraising = () => {
   const location = useLocation();
   const path = location.pathname;
+
+  const { setFundraising } = useSidebar();
+
+  useEffect(() => {
+    setFundraising(true);
+  }, []);
 
   return (
     <div className="relative lg:grid md:grid lg:grid-cols-15 md:grid-cols-12 lg:bg-[#F8F8F8] md:bg-[#F8F8F8]">

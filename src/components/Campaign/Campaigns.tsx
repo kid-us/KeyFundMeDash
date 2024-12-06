@@ -4,7 +4,6 @@ import { Campaigns } from "../Pages/Fundraising";
 import Confirmation from "../Modal/Confirmation";
 import Comment from "../Modal/Comment";
 import Description from "../Modal/Description";
-import useSidebar from "../../store/useSidebarStore";
 
 interface Props {
   campaigns: Campaigns[];
@@ -22,13 +21,9 @@ const Campaign = ({ campaigns, status }: Props) => {
   const [title] = useState<string>("Pending Fundraising");
   useDocumentTitle(title);
 
-  const { setFundraising } = useSidebar();
-
   const [statusButtons, setStatusButtons] = useState<Btns[]>([]);
 
   useEffect(() => {
-    setFundraising(true);
-
     if (status === "pending") {
       setStatusButtons([
         { id: 1, type: "confirmation", name: "Approve", bg: "bg-green-500" },
@@ -213,7 +208,7 @@ const Campaign = ({ campaigns, status }: Props) => {
                   </p>
                   {/* Created At */}
                   <p className="text-gray-500 text-sm">
-                    <span className="bi-calendar me-2"></span>{" "}
+                    <span className="bi-calendar2-week me-2"></span>{" "}
                     {getDate(c.created_at)}
                   </p>
                 </div>

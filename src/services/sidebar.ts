@@ -43,8 +43,20 @@ export const fund: Menu[] = [
   },
   {
     id: 3,
-    icon: "x",
+    icon: "x-lg",
     name: "Declined",
     path: "/declined",
+  },
+  {
+    id: 4,
+    icon: "patch-check-fill",
+    name: "Completed",
+    path: "/completed",
+  },
+  {
+    id: 5,
+    icon: "battery",
+    name: "Deactivated",
+    path: "/deactivated",
   },
 ];
