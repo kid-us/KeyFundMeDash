@@ -5,7 +5,6 @@ import Login from "./components/Pages/Login";
 import PageNotFound from "./components/Pages/PageNotFound";
 import Fundraising from "./components/Pages/Fundraising";
 import Setting from "./components/Pages/Setting";
-// import Protected from "./components/Protected/Protected";
 
 function App() {
   return (

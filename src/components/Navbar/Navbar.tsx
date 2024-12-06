@@ -20,9 +20,13 @@ const Navbar = () => {
           <p className="text-sm text-gray-400">Welcome back Admin.</p>
         </div>
 
-        {/* <div className="bg-white rounded-full px-10 py-2 font-bold uppercase">
-        Admin
-      </div> */}
+        <div className="flex gap-x-10 items-center bg-white rounded-lg shadow px-10 font-bold">
+          <p className="text-gray-500">
+            <span className="bi-person-circle"></span> Admin
+          </p>
+          <button className="bi-chat-square-text-fill text-blue-500"></button>
+          <button className="bi-box-arrow-left text-red-500"></button>
+        </div>
       </div>
 
       {/* Small Device Navbar */}
@@ -32,10 +36,13 @@ const Navbar = () => {
           <p className="font-bold pt-2">KeyFundMe</p>
         </Link>
 
-        <button
-          onClick={() => setMenu(true)}
-          className="bi-list text-2xl"
-        ></button>
+        <div className="flex gap-x-5">
+          <button className="bi-chat-square-text-fill text-blue-500 text-lg pt-1"></button>
+          <button
+            onClick={() => setMenu(true)}
+            className="bi-list text-2xl"
+          ></button>
+        </div>
       </div>
 
       {/* Small device Menu */}
