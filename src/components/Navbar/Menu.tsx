@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { logo2 } from "../../assets";
-import { useState } from "react";
 import { fund, menus } from "../../services/sidebar";
+import useSidebar from "../../store/useSidebarStore";
 
 interface Props {
   onClose: () => void;
@@ -11,7 +11,7 @@ const Menu = ({ onClose }: Props) => {
   const location = useLocation();
   const path = location.pathname;
 
-  const [fundraising, setFundraising] = useState<boolean>(false);
+  const { fundraising, setFundraising } = useSidebar();
 
   return (
     <div className="absolute top-0 left-0 p-5 w-full bg-white z-40 h-[100vh]">

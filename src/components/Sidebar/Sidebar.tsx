@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import { logo2 } from "../../assets";
-// import { useState } from "react";
 import { fund, menus } from "../../services/sidebar";
 import useSidebar from "../../store/useSidebarStore";
 
