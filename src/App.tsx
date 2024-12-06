@@ -48,6 +48,26 @@ function App() {
           }
         />
 
+        {/* COMPLETED */}
+        <Route
+          path="/completed"
+          element={
+            // <Protected>
+            <Fundraising />
+            // </Protected>
+          }
+        />
+
+        {/* DEACTIVATED */}
+        <Route
+          path="/deactivated"
+          element={
+            // <Protected>
+            <Fundraising />
+            // </Protected>
+          }
+        />
+
         <Route
           path="/setting"
           element={

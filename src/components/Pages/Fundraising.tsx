@@ -6,6 +6,8 @@ import Approved from "../Fundraising/Approved";
 import Declined from "../Fundraising/Declined";
 import { useEffect } from "react";
 import useSidebar from "../../store/useSidebarStore";
+import Completed from "../Fundraising/Completed";
+import Deactivated from "../Fundraising/Deactivated";
 
 export interface Campaigns {
   fid: string;
@@ -81,6 +83,10 @@ const Fundraising = () => {
           {path === "/approved" && <Approved />}
           {/* Declined */}
           {path === "/declined" && <Declined />}
+          {/* Completed */}
+          {path === "/completed" && <Completed />}
+          {/* Deactivated */}
+          {path === "/deactivated" && <Deactivated />}
         </div>
       </div>
     </div>
