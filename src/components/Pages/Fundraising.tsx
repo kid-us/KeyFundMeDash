@@ -18,11 +18,11 @@ export interface Campaigns {
   account_number: string;
   created_at: string;
   _created_at: string;
-  
+
   withdrawal_approved: boolean;
   withdrawal_requested: boolean;
   phone_number_approved: boolean;
-  
+
   id: string;
   for_who: string;
   campaign_title: string;
@@ -37,7 +37,7 @@ export interface Campaigns {
   is_active: boolean;
 
   approved_at: string;
-  
+
   total_raised_amount_in_birr: number;
   raised_birr: number;
   raised_usd: number;
@@ -66,7 +66,7 @@ const Fundraising = () => {
       <div className="lg:col-span-12 md:col-span-9 lg:px-8 lg:py-9 p-3">
         <Navbar />
 
-        <div className="flex justify-between mt-3">
+        <div className="mt-3">
           {/* Pending */}
           {path === "/pending" && <Pending />}
           {/* Approved */}
