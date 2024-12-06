@@ -30,7 +30,7 @@ const Navbar = () => {
       </div>
 
       {/* Small Device Navbar */}
-      <div className="lg:hidden bg-white flex justify-between shadow p-2 rounded-xl">
+      <div className="lg:hidden md:hidden bg-white flex justify-between shadow p-2 rounded-xl">
         <Link to={"/"} className="flex gap-x-4">
           <img src={logo2} alt="Logo" className="w-10" />
           <p className="font-bold pt-2">KeyFundMe</p>

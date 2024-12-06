@@ -8,12 +8,12 @@ const Home = () => {
   useDocumentTitle(title);
 
   return (
-    <div className="relative lg:grid md:grid grid-cols-11 lg:bg-[#F8F8F8]">
+    <div className="relative lg:grid md:grid lg:grid-cols-15 md:grid-cols-12 lg:bg-[#F8F8F8] md:bg-[#F8F8F8]">
       {/* Sidebar */}
-      <div className="lg:col-span-2 lg:block hidden w-full">
+      <div className="lg:col-span-3 md:col-span-3 lg:block md:block hidden w-full">
         <Sidebar />
       </div>
-      <div className="lg:col-span-9 md:col-span-10 lg:px-8 lg:py-9 p-3">
+      <div className="lg:col-span-12 md:col-span-9 lg:px-8 lg:py-9 p-3">
         <Navbar />
       </div>
     </div>
