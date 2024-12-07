@@ -109,3 +109,27 @@ input[type="number"] {
     background-size: 20% 50%, 20% 50%, 20% 50%;
   }
 }
+
+/* Scroll Snap Container */
+.snap-container {
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(5, 222, 241);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #9ca3af;
+  border-radius: 3px;
+}

@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <>
       {/* Large Device  Navbar*/}
-      <div className="lg:flex hidden justify-between ">
+      <div className="lg:flex md:flex hidden justify-between ">
         <div>
           <p className="text-2xl font-bold first-letter:uppercase">
             {path === "/" ? "Dashboard" : path.substring(1)}{" "}
@@ -31,7 +31,7 @@ const Navbar = () => {
       </div>
 
       {/* Small Device Navbar */}
-      <div className="lg:hidden md:hidden bg-white flex justify-between shadow p-2 rounded-xl">
+      <div className="sticky top-1 z-50 lg:hidden md:hidden bg-white flex justify-between shadow p-2 rounded-xl">
         <Link to={"/"} className="flex gap-x-4">
           <img src={logo2} alt="Logo" className="w-10" />
           <p className="font-bold pt-2">KeyFundMe</p>
